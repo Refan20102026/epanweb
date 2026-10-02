@@ -1,0 +1,807 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Refan Ali Kurniawan - Spaceman Theme">
+    <title>Refan Ali Kurniawan | Spaceman Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            background: #030712;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           BACKGROUND
+        ========================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                radial-gradient(circle at 20% 20%, #243b80 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, #35106b 0%, transparent 30%),
+                linear-gradient(135deg, #020617, #0b1026 50%, #050014);
+        }
+
+        .stars,
+        .stars::before,
+        .stars::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image:
+                radial-gradient(2px 2px at 10% 20%, white, transparent),
+                radial-gradient(1px 1px at 20% 80%, white, transparent),
+                radial-gradient(2px 2px at 35% 40%, white, transparent),
+                radial-gradient(1px 1px at 50% 15%, white, transparent),
+                radial-gradient(2px 2px at 65% 70%, white, transparent),
+                radial-gradient(1px 1px at 80% 30%, white, transparent),
+                radial-gradient(2px 2px at 90% 85%, white, transparent),
+                radial-gradient(1px 1px at 75% 10%, white, transparent);
+            background-size: 300px 300px;
+            animation: starsMove 25s linear infinite;
+        }
+
+        .stars::before {
+            opacity: 0.5;
+            transform: scale(1.5);
+            animation-duration: 40s;
+        }
+
+        .stars::after {
+            opacity: 0.3;
+            transform: scale(2);
+            animation-duration: 60s;
+        }
+
+        @keyframes starsMove {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-300px);
+            }
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 8%;
+            background: rgba(3, 7, 18, 0.65);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #8be9fd;
+        }
+
+        .logo span {
+            color: #c084fc;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #8be9fd;
+            text-shadow: 0 0 15px #8be9fd;
+        }
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        section {
+            min-height: 100vh;
+            padding: 120px 8% 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.7rem;
+            margin-bottom: 10px;
+            color: #8be9fd;
+        }
+
+        .section-title p {
+            color: #a5b4fc;
+        }
+
+        /* =========================
+           HOME
+        ========================= */
+
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid #8be9fd;
+            border-radius: 30px;
+            color: #8be9fd;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(139,233,253,0.2);
+        }
+
+        .hero-text h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 span {
+            color: #c084fc;
+            text-shadow: 0 0 30px rgba(192,132,252,0.5);
+        }
+
+        .hero-text h3 {
+            font-size: 1.4rem;
+            color: #8be9fd;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid #8be9fd;
+            transition: 0.3s;
+        }
+
+        .btn.primary {
+            background: linear-gradient(90deg, #2563eb, #9333ea);
+            border: none;
+            box-shadow: 0 0 25px rgba(59,130,246,0.35);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 25px rgba(139,233,253,0.4);
+        }
+
+        /* =========================
+           ASTRONAUT
+        ========================= */
+
+        .astronaut-container {
+            position: relative;
+            width: 350px;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: astronautFloat 4s ease-in-out infinite;
+        }
+
+        .planet {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            box-shadow:
+                0 0 50px #4f46e5,
+                inset -30px -20px 50px rgba(0,0,0,0.5);
+        }
+
+        .planet::before {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 70px;
+            border: 5px solid rgba(255,255,255,0.25);
+            border-radius: 50%;
+            transform: rotate(-20deg);
+            left: -50px;
+            top: 115px;
+        }
+
+        .astronaut {
+            position: relative;
+            z-index: 2;
+            font-size: 9rem;
+            filter: drop-shadow(0 0 25px rgba(255,255,255,0.5));
+        }
+
+        @keyframes astronautFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(2deg);
+            }
+            50% {
+                transform: translateY(-25px) rotate(-2deg);
+            }
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            padding: 30px;
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(139,233,253,0.15);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #8be9fd;
+            box-shadow: 0 15px 40px rgba(59,130,246,0.15);
+        }
+
+        .card h3 {
+            color: #8be9fd;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill {
+            padding: 25px;
+            text-align: center;
+            background: rgba(15,23,42,0.7);
+            border-radius: 18px;
+            border: 1px solid rgba(192,132,252,0.2);
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 25px rgba(192,132,252,0.2);
+        }
+
+        .skill .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .skill h3 {
+            margin-bottom: 10px;
+        }
+
+        .skill p {
+            color: #94a3b8;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            background: rgba(15,23,42,0.75);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(139,233,253,0.15);
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            border-color: #8be9fd;
+            box-shadow: 0 15px 40px rgba(139,233,253,0.12);
+        }
+
+        .project-image {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            background:
+                radial-gradient(circle at center, #312e81, #020617);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            color: #8be9fd;
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            color: #c084fc;
+            text-decoration: none;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-container {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-container p {
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-box {
+            padding: 20px 30px;
+            background: rgba(15,23,42,0.7);
+            border: 1px solid rgba(139,233,253,0.15);
+            border-radius: 15px;
+        }
+
+        .contact-box a {
+            color: #8be9fd;
+            text-decoration: none;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+            #home {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 150px;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container,
+            .projects-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .astronaut-container {
+                transform: scale(0.8);
+                margin-top: -20px;
+            }
+
+            .skills-container,
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stars"></div>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav>
+            <div class="logo">
+                REFAN<span>ALI</span>
+            </div>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HOME -->
+    <section id="home">
+
+        <div class="hero-text">
+
+            <div class="badge">
+                🚀 Welcome to My Universe
+            </div>
+
+            <h1>
+                <span>Refan </span>
+            </h1>
+
+            <h3>🚀 Web Developer & Creative Explorer</h3>
+
+            <p>
+                Saya Refan Ali Kurniawan. Saya adalah seseorang yang
+                tertarik dengan dunia teknologi, desain, dan pengembangan
+                website. Mari menjelajahi ide-ide baru bersama di dalam
+                dunia digital saya.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn primary">
+                    🚀 Explore My Work
+                </a>
+
+                <a href="#contact" class="btn">
+                    📡 Contact Me
+                </a>
+            </div>
+
+        </div>
+
+        <div class="astronaut-container">
+
+            <div class="planet"></div>
+
+            <div class="astronaut">
+                👨‍🚀
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="section-title">
+            <h2>🌌 About Me</h2>
+            <p>Get to know the astronaut behind the screen</p>
+        </div>
+
+        <div class="about-container">
+
+            <div class="card">
+                <h3>👨‍🚀 Who Am I?</h3>
+                <p>
+                    Nama saya <strong>Refan Ali Kurniawan</strong>.
+                    Saya memiliki ketertarikan pada teknologi dan
+                    pengembangan website. Saya suka mempelajari hal baru
+                    dan membuat sesuatu yang kreatif menggunakan teknologi.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🛰️ My Mission</h3>
+                <p>
+                    Misi saya adalah terus belajar, mengembangkan kemampuan,
+                    dan menciptakan karya digital yang menarik, modern,
+                    serta dapat memberikan pengalaman yang baik bagi pengguna.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+        <div class="section-title">
+            <h2>🪐 My Skills</h2>
+            <p>Tools and technologies I explore</p>
+        </div>
+
+        <div class="skills-container">
+
+            <div class="skill">
+                <div class="icon">🌐</div>
+                <h3>HTML</h3>
+                <p>Building website structure</p>
+            </div>
+
+            <div class="skill">
+                <div class="icon">🎨</div>
+                <h3>CSS</h3>
+                <p>Creating beautiful interfaces</p>
+            </div>
+
+            <div class="skill">
+                <div class="icon">⚡</div>
+                <h3>JavaScript</h3>
+                <p>Adding interactive experiences</p>
+            </div>
+
+            <div class="skill">
+                <div class="icon">💻</div>
+                <h3>Web Design</h3>
+                <p>Designing modern websites</p>
+            </div>
+
+            <div class="skill">
+                <div class="icon">🚀</div>
+                <h3>Creativity</h3>
+                <p>Exploring new ideas</p>
+            </div>
+
+            <div class="skill">
+                <div class="icon">🧠</div>
+                <h3>Problem Solving</h3>
+                <p>Finding creative solutions</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+        <div class="section-title">
+            <h2>🚀 My Projects</h2>
+            <p>Some missions I've worked on</p>
+        </div>
+
+        <div class="projects-container">
+
+            <div class="project">
+
+                <div class="project-image">
+                    🌐
+                </div>
+
+                <div class="project-content">
+                    <h3>Website Portfolio</h3>
+
+                    <p>
+                        Website portfolio pribadi dengan desain modern
+                        dan tema luar angkasa.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        View Project →
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="project">
+
+                <div class="project-image">
+                    💻
+                </div>
+
+                <div class="project-content">
+                    <h3>Web Application</h3>
+
+                    <p>
+                        Aplikasi web sederhana untuk menampilkan
+                        informasi dan data secara interaktif.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        View Project →
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="project">
+
+                <div class="project-image">
+                    🎨
+                </div>
+
+                <div class="project-content">
+                    <h3>Creative Design</h3>
+
+                    <p>
+                        Eksplorasi desain digital dengan konsep
+                        futuristik dan teknologi luar angkasa.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        View Project →
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <div class="section-title">
+            <h2>📡 Contact Me</h2>
+            <p>Let's connect across the universe</p>
+        </div>
+
+        <div class="contact-container">
+
+            <p>
+                Punya project, ide, atau ingin berkolaborasi?
+                Jangan ragu untuk menghubungi saya.
+            </p>
+
+            <div class="contact-info">
+
+                <div class="contact-box">
+                    📧
+                    <a href="mailto:refanali5049@gmail.com">
+                        Email
+                    </a>
+                </div>
+
+                <div class="contact-box">
+                    📱
+                    <a href="https://www.instagram.com/fanzz._.10?stkn=MXlyb2drd2RqcWR2ZA==">
+                        Instagram
+                    </a>
+                </div>
+
+                <div class="contact-box">
+                    💻
+                    <a href="https://refan20102026.github.io/WebRefann/">
+                        GitHub
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © 2026 Refan Ali Kurniawan 🚀 All Rights Reserved.
+        </p>
+    </footer>
+
+</body>
+</html>
+```
